@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barışalım mı?</title>
+    <style>
+        .permanent-message {
+            text-align: center;
+            font-size: 36px;
+            font-weight: bold;
+            color: #ffd700;
+            text-shadow: 0 0 10px rgba(0,0,0,0.5);
+            margin-top: 50px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600&display=swap');
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: radial-gradient(circle, #1a1a2e 0%, #16213e 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #f8f8f8;
+            overflow: hidden;
+        }
+        
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 50px 70px;
+            border-radius: 25px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            backdrop-filter: blur(15px);
+            max-width: 600px;
+            width: 80%;
+            border: 1px solid rgba(255,255,255,0.1);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -150%;
+            left: -150%;
+            width: 400%;
+            height: 400%;
+            background: radial-gradient(
+                ellipse closest-side,
+                rgba(255,215,0,0.15) 0%,
+                rgba(255,215,0,0.1) 30%,
+                rgba(255,215,0,0.05) 50%,
+                transparent 70%
+            );
+            animation: royalShine 12s linear infinite;
+            z-index: -1;
+            opacity: 0.8;
+        }
+        
+        @keyframes royalShine {
+            0% { 
+                transform: rotate(0deg) translateX(-50%) translateY(-50%);
+                opacity: 0.8;
+            }
+            50% { 
+                opacity: 1;
+            }
+            100% { 
+                transform: rotate(360deg) translateX(-50%) translateY(-50%);
+                opacity: 0.8;
+            }
+        }
+        
+        .container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(
+                circle at center,
+                rgba(255,255,255,0.05) 0%,
+                transparent 70%
+            );
+            z-index: -1;
+            animation: pulse 8s ease-in-out infinite alternate;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.3; }
+            100% { transform: scale(1.05); opacity: 0.5; }
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            color: #ffd700;
+            margin-bottom: 40px;
+            font-size: 2.8rem;
+            text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            letter-spacing: 1px;
+        }
+        
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        button {
+            padding: 18px 36px;
+            border: none;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(.4,2,.3,1);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+            min-width: 120px;
+            outline: none;
+            letter-spacing: 1px;
+            user-select: none;
+            background-clip: padding-box;
+        }
+        button:focus {
+            outline: 3px solid #ffd700;
+            outline-offset: 2px;
+        }
+        #yesBtn {
+            background: linear-gradient(45deg, #4CAF50, #2E8B57);
+            color: white;
+            box-shadow: 0 4px 20px 0 rgba(76,175,80,0.3);
+        }
+        #noBtn {
+            background: linear-gradient(45deg, #f44336, #B22222);
+            color: white;
+            box-shadow: 0 4px 20px 0 rgba(244,67,54,0.3);
+        }
+        button:hover, button:active {
+            filter: brightness(1.15) drop-shadow(0 0 10px #ffd70088);
+            transform: translateY(-3px) scale(1.05);
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 10px;
+            }
+            .buttons {
+                flex-direction: column;
+                gap: 18px;
+            }
+            button {
+                width: 100%;
+                min-width: unset;
+                font-size: 16px;
+            }
+        }
+        .heart {
+    position: fixed;
+    top: -10%;
+    animation: float linear infinite;
+    opacity: 0.7;
+    text-shadow: 0 0 10px #ff0000;
+}
+
+@keyframes float {
+    to {
+        transform: translateY(120vh);
+    }
+}
+
+.particle {
+    position: fixed;
+    background: rgba(255, 215, 0, 0.7);
+    border-radius: 50%;
+    width: 5px;
+    height: 5px;
+    animation: float linear infinite;
+}
+            .celebration-message {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(255, 215, 0, 0.9);
+                color: #1a1a2e;
+                padding: 20px 40px;
+                border-radius: 50px;
+                font-size: 24px;
+                font-weight: bold;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+                z-index: 1000;
+                animation: fadeIn 0.5s ease-out, floatUp 0.5s ease-out 0.5s;
+                opacity: 1;
+                transition: opacity 1s;
+            }
+            
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translate(-50%, -40%); }
+                to { opacity: 1; transform: translate(-50%, -50%); }
+            }
+            
+            @keyframes floatUp {
+                to { transform: translate(-50%, -60%); }
+            }
+            .celebration-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 215, 0, 0.9);
+            color: #1a1a2e;
+            padding: 30px 60px;
+            border-radius: 50px;
+            font-size: 28px;
+            font-weight: bold;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            z-index: 1000;
+            animation: fadeIn 0.5s ease-out, floatUp 0.5s ease-out 0.5s;
+            opacity: 1;
+            transition: opacity 1s;
+        }
+
+        .heart {
+            animation-duration: 3s !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts" id="hearts"></div>
+    <div class="particles" id="particles"></div>
+    <div class="container">
+        <h1>Barışalım mı artık?</h1>
+        <div class="buttons">
+            <button id="yesBtn">Evet</button>
+            <button id="noBtn">Hayır</button>
+        </div>
+    </div>
+
+    <script>
+        // Kalp oluşturma fonksiyonu
+        const heartsContainer = document.getElementById('hearts');
+        const heartSymbols = ['❤️', '💖', '💗', '💓', '💞', '💕'];
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.textContent = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+            heart.style.left = `${Math.random() * 100}%`;
+            heart.style.fontSize = `${15 + Math.random() * 30}px`;
+            heart.style.animationDuration = `${10 + Math.random() * 20}s`;
+            heart.style.animationDelay = `0s`;
+            heartsContainer.appendChild(heart);
+            // Kalp animasyonu bitince DOM'dan sil
+            setTimeout(() => {
+                heart.remove();
+            }, parseFloat(heart.style.animationDuration) * 1000);
+        }
+        // Belirli aralıklarla yeni kalpler oluştur
+        setInterval(createHeart, 500);
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 50; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            particle.style.left = `${Math.random() * 100}%`;
+            particle.style.top = `${Math.random() * 100}%`;
+            particle.style.animationDuration = `${10 + Math.random() * 20}s`;
+            particle.style.animationDelay = `${Math.random() * 5}s`;
+            particlesContainer.appendChild(particle);
+        }
+        
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        
+        const messages = [
+    "Barışalım mı? 🤍🕊️",
+
+"Seni özledim... 💌",
+
+"Kırgınlık bitsin. 🤝",
+
+"Yeniden başlayalım. 🌿",
+
+"Affet beni. 🙏"
+
+
+        ];
+        
+        let clickCount = 0;
+        
+        noBtn.addEventListener('click', function() {
+            yesBtn.textContent = messages[clickCount % messages.length];
+            yesBtn.style.transform = `scale(${1.1 + (clickCount * 0.05)}) translateY(-5px)`;
+            clickCount++;
+        });
+
+        yesBtn.addEventListener('click', function() {
+            // Başlığı ve butonları kaldır
+            document.querySelector('h1').remove();
+            document.querySelector('.buttons').remove();
+            
+            // Kalıcı mesajı oluştur
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'permanent-message';
+            messageDiv.innerHTML = 'Harika! Yeniden bir aradayız 💞🌿❤️';
+            document.querySelector('.container').appendChild(messageDiv);
+            
+            // Kalp animasyonlarını hızlandır
+            const hearts = document.querySelectorAll('.heart');
+            hearts.forEach(heart => {
+                heart.style.animationDuration = '3s';
+            });
+            
+            // Daha fazla kalp oluştur
+            setInterval(createHeart, 200);
+        });
+
+
+    </script>
+</body>
+</html>
